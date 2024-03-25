@@ -6,7 +6,13 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-image": "docker build -t angular16csp-docker-image .",
+    "remove-image": "docker rmi angular16csp-docker-image",
+    "run-container": "docker run --name angular16csp-docker-container -d -p 8080:80 angular16csp-docker-image",
+    "remove-container": "docker rm -f angular16csp-docker-container",
+    "containerize": "npm run build-image && npm run run-container",
+    "recontainerize": "npm run remove-container && npm run build-image && npm run run-container"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +24,7 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "crypto-js": "^4.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

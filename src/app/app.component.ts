@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { CSP_NONCE, Component, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular16csp';
+  constructor(@Inject(CSP_NONCE) public nonce: string) {
+    console.log('nonce', nonce)
+  }
 }
